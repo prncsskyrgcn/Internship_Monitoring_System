@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Bulan Campus</title>
+    <link rel="stylesheet" href="style/AdminDashboard.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+    
+    <!-- 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</head>
+<body>
+    
+
+    <body id="body-pd">
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i></div>
+            <div class="header_img"> <img src="images/Admin Gracela.png" alt="User Admin"> <div class="message">Admin na si Vanessa Mariz <br> ILDO Coordinator <br> SorSU <br> Bulan Campus</div> </div>
+              
+        </header>
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div> <a href="#" class="logo"> <img src="images/SorSU-Logo.png" alt="logo"> <div class="name"><img src="images/SORSOGON_STATE_UNIVERSITY_BULAN_CAMPUS-removebg-preview.png" alt="name"> </div></a> 
+                    <div class="nav_list"> 
+                        <a href="AdminDashboard.html" class="nav_link"> <i class='bx bxs-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
+                        <a href="#" class="nav_link active"> <i class='bx bxs-folder-open nav_icon'></i> <span class="nav_name">Student List</span> </a> 
+                        <a href="AdminFeedbacks.html" class="nav_link"> <i class='bx bxs-message-square-detail nav_icon'></i> <span class="nav_name">Feedbacks</span> </a> 
+                        <a href="AdminEvaluation.html" class="nav_link"> <i class='bx bxs-door-open nav_icon'></i> <span class="nav_name">Evaluation Portal</span> </a> 
+                    </div>
+                </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Log out</span> </a>
+            </nav>
+        </div>
+
+        
+        <!--Container Main start-->
+        <div class="title">
+        <div class="height-100 bg-light">
+            <h4></h4>
+
+        <div class="container mt-10">
+            <h2><br>STUDENT LIST<br></h2>
+            <div class="row mb-3">
+                <div class="col-md-6 col-sm-12">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search">
+                </div>
+                <div class="col-md-6 col-sm-12 text-md-right mt-2">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add New Student</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>School ID</th>
+                            <th>Full Name</th>
+                            <th>Course</th>
+                            <th>Contact Number</th>
+                            <th>Company</th>
+                            <th>Address</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>001</td>
+                            <td>John Doe</td>
+                            <td>Computer Science</td>
+                            <td>123-456-7890</td>
+                            <td>ABC Inc.</td>
+                            <td>123 Main St</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        On Internship
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusDropdown">
+                                        <li><a class="dropdown-item" href="#" onclick="updateStatus('On Internship')">On Internship</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="updateStatus('Dropped')">Dropped</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="updateStatus('Late')">Late</a></li>
+                                    </ul>
+                                </div>                              
+                            </div>
+                            </td>
+                        </tr>
+
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <!-- Add Data Modal -->
+        <div class="modal fade" id="addDataModal" tabindex="-1" role="dialog" aria-labelledby="addDataModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addDataModalLabel">Add New Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+     
+                        <form>
+                            <div class="form-group">
+                                <label for="schoolID">School ID</label>
+                                <input type="text" class="form-control" id="schoolID">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" class="form-control" id="fullName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="course">Course</label>
+                                <input type="text" class="form-control" id="course">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="number">Number</label>
+                                <input type="text" class="form-control" id="number">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" class="form-control" id="company">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="statusDropdown">Status</label>
+                                <input type="text" class="form-control" id="statusDropdown">
+                            </div>
+                           
+                        </form>
+                      
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        </div>
+    </div>
+        <!--Container Main end-->
+
+        <script>
+            // JavaScript to handle table filtering
+            $(document).ready(function () {
+                $('#searchInput').on('keyup', function () {
+                    var searchText = $(this).val().toLowerCase();
+                    $('#dataTable tbody tr').filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
+                    });
+                });
+            });
+        </script>
+
+<script>
+    function updateStatus(status) {
+        document.getElementById("statusDropdown").textContent = status;
+    }
+</script>
+
+        <script src="javascript/script.js"></script>
+
+           <!-- Include Bootstrap JS and Popper.js -->
+           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
