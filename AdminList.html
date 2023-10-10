@@ -19,6 +19,83 @@
         top: -330px;
         left: -10px;
     }
+            /* Add your CSS styles here */
+            table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button{
+            background-color: green;
+            border: none;
+            border-radius: 10px;
+            padding: 5px;
+            color: white;
+            font-size: 11px;
+            width: 100px;
+        }
+        #addStudent {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+    .kaye{
+        margin-top: 100px;
+    }
+
+    .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .modal-content {
+            background-color: #ffffff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 5px 10px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+        .placeholder{
+            border: none;
+        }
+
 </style>
 
 </head>
@@ -44,160 +121,181 @@
             </nav>
         </div>
 
-        
-        <!--Container Main start-->
-        <div class="title">
-        <div class="height-100 bg-light">
-            <h4></h4>
-
-        <div class="container mt-10">
-            <h2><br>STUDENT LIST<br></h2>
-            <div class="row mb-3">
-                <div class="col-md-6 col-sm-12">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search">
-                </div>
-                <div class="col-md-6 col-sm-12 text-md-right mt-2">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add New Student</button>
-                </div>
-            </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>School ID</th>
-                        <th>Full Name</th>
-                        <th>Course</th>
-                        <th>Contact Number</th>
-                        <th>Company</th>
-                        <th>Address</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Sample data rows -->
-                    <tr>
-                        <td>10-122344</td>
-                        <td>John Doe</td>
-                        <td>Computer Science</td>
-                        <td>123-456-7890</td>
-                        <td>ABC Inc.</td>
-                        <td>123 Main St</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    On Internship
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusDropdown">
-                                    <li><a class="dropdown-item" href="#" onclick="updateStatus('On Internship')">On Internship</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="updateStatus('Dropped')">Dropped</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="updateStatus('Late')">Late</a></li>
-                                </ul>
-                            </div>                              
-                        </div>
-                        </td>
-                    </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <div class="kaye">
+            <h1>Student Database</h1>
     
-        <!-- Add Data Modal -->
-        <div class="modal fade" id="addDataModal" tabindex="-1" role="dialog" aria-labelledby="addDataModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addDataModalLabel">Add New Data</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-     
-                        <form>
-                            <div class="form-group">
-                                <label for="schoolID">School ID</label>
-                                <input type="text" class="form-control" id="schoolID">
-                            </div>
+            <!-- Add New Student Button -->
+            <button id="addStudent">Add New Student</button>
+            
+            <!-- Search Bar -->
+            <input type="text" id="searchInput" placeholder="Search by Name">
+    
+        
+     <!-- Table -->
+     <table>
+        <thead>
+            <tr>
+                <th>School ID</th>
+                <th>Full Name</th>
+                <th>Course</th>
+                <th>Contact Number</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable">
+            <!-- Table rows will be populated here using JavaScript -->
+        </tbody>
+    </table>
 
-                            <div class="form-group">
-                                <label for="fullName">Full Name</label>
-                                <input type="text" class="form-control" id="fullName">
-                            </div>
+    <!-- Pagination -->
+    <div class="pagination" id="pagination">
+        <!-- Pagination buttons will be generated here -->
+    </div>
 
-                            <div class="form-group">
-                                <label for="course">Course</label>
-                                <input type="text" class="form-control" id="course">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="number">Number</label>
-                                <input type="text" class="form-control" id="number">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="company">Company</label>
-                                <input type="text" class="form-control" id="company">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="statusDropdown">Status</label>
-                                <input type="text" class="form-control" id="statusDropdown">
-                            </div>
-                           
-                        </form>
-                      
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-                            <!-- Pagination Section -->
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
-
+    <!-- Modal for Add Student Form -->
+    <div class="modal" id="addStudentModal">
+        <div class="modal-content">
+            <button class="close-button" id="closeModal"><i class='bx bx-x'></i></button>
+            <h2>Add New Student</h2>
+            <form id="addStudentFormModal">
+                <label for="schoolId">School ID:</label>
+                <input type="text" id="schoolId" name="schoolId" required>
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required><br>
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+                <label for="contactNumber">Contact Number:</label>
+                <input type="text" id="contactNumber" name="contactNumber" required><br>
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required><br>
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Dropped">Dropped</option>
+                    <option value="Late">Late</option>
+                </select><br>
+                <button type="button" id="addStudentButtonModal">Add Student</button>
+            </form>
         </div>
     </div>
-        <!--Container Main end-->
 
-        <script>
-            // JavaScript to handle table filtering
-            $(document).ready(function () {
-                $('#searchInput').on('keyup', function () {
-                    var searchText = $(this).val().toLowerCase();
-                    $('#dataTable tbody tr').filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
-                    });
-                });
+    <script>
+        // Sample data for the table (you can replace this with your own data)
+        const students = [
+            // Your student data here...
+        ];
+
+        const itemsPerPage = 2; // Number of items per page
+        let currentPage = 1; // Current page number
+
+        // Function to calculate the total number of pages
+        function getTotalPages() {
+            return Math.ceil(students.length / itemsPerPage);
+        }
+
+        // Function to populate the table with student data based on the current page
+        function populateTable() {
+            const studentTable = document.getElementById('studentTable');
+            studentTable.innerHTML = '';
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const studentsToDisplay = students.slice(startIndex, endIndex);
+
+            studentsToDisplay.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.schoolId}</td>
+                    <td>${student.fullName}</td>
+                    <td>${student.course}</td>
+                    <td>${student.contactNumber}</td>
+                    <td>${student.company}</td>
+                    <td>${student.address}</td>
+                    <td>${student.status}</td>
+                `;
+                studentTable.appendChild(row);
             });
-        </script>
+        }
 
-<script>
-    function updateStatus(status) {
-        document.getElementById("statusDropdown").textContent = status;
-    }
-</script>
+        // Function to generate pagination buttons
+        function generatePaginationButtons() {
+            const totalPages = getTotalPages();
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
 
-        <script src="javascript/script.js"></script>
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.innerText = i;
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    populateTable();
+                    generatePaginationButtons();
+                });
+                pagination.appendChild(button);
+            }
+        }
+
+        // Function to filter students by name
+        function filterStudentsByName() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredStudents = students.filter(student => student.fullName.toLowerCase().includes(searchInput));
+            currentPage = 1; // Reset to the first page when searching
+            populateTable(filteredStudents);
+            generatePaginationButtons();
+        }
+
+        // Show the Add Student form in the modal when the button is clicked
+        const addStudentButton = document.getElementById('addStudent');
+        const addStudentModal = document.getElementById('addStudentModal');
+        const closeModalButton = document.getElementById('closeModal');
+
+        addStudentButton.addEventListener('click', () => {
+            addStudentModal.style.display = 'block';
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            addStudentModal.style.display = 'none';
+        });
+
+        // Add Student Button Click Event for the modal form
+        const addStudentButtonModal = document.getElementById('addStudentButtonModal');
+        addStudentButtonModal.addEventListener('click', () => {
+            const newStudent = {
+                schoolId: document.getElementById('schoolId').value,
+                fullName: document.getElementById('fullName').value,
+                course: document.getElementById('course').value,
+                contactNumber: document.getElementById('contactNumber').value,
+                company: document.getElementById('company').value,
+                address: document.getElementById('address').value,
+                status: document.getElementById('status').value,
+            };
+
+            students.push(newStudent);
+            currentPage = 1; // Reset to the first page
+            populateTable();
+            generatePaginationButtons();
+
+            // Reset the form fields and hide the modal
+            document.getElementById('addStudentFormModal').reset();
+            addStudentModal.style.display = 'none';
+        });
+
+        // Search Input Event Listener
+        document.getElementById('searchInput').addEventListener('input', filterStudentsByName);
+
+        // Initial population of the table and pagination buttons
+        populateTable();
+        generatePaginationButtons();
+    </script>
+
+    
+<script src="javascript/script.js"></script>
 
 </body>
 </html>
+

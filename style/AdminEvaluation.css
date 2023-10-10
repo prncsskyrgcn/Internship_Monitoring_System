@@ -177,6 +177,37 @@ a{
     height:100vh;
 }
 
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+#pagination {
+    margin-top: 20px;
+}
+
+
 @media screen and (min-width: 768px){
     
     body{
