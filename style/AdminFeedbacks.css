@@ -195,12 +195,14 @@ a{
 
 .contacts h2 {
     font-size: 20px;
+    color: white;
 }
 
 .messages {
     flex: 2;
     padding: 20px;
-    background-color: #fff;
+    background-color: #481111;
+    color: white;
 }
 
 .messages h2 {
