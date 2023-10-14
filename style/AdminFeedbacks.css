@@ -188,9 +188,10 @@ a{
 .contacts {
     flex: 1;
     padding: 20px;
-    background-color: #7d3f3f;
+    background-color: #4A4A4A;
     height: 480px;
-    max-height: 500vh;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .contacts h2 {
@@ -201,25 +202,39 @@ a{
 .messages {
     flex: 2;
     padding: 20px;
-    background-color: #481111;
+    padding-top: 5px;
+    background-color: #6B6B6B;
     color: white;
+    height: 480px;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .messages h2 {
     font-size: 20px;
+    margin-top: 10px;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+    position: absolute;
 }
 
 li {
-    margin-bottom: 10px;
+    color: white;
 }
 
-button {
+.sleep {
+    display: block;
+    position: relative;
     margin-top: 10px;
+}
+.hotdog{
+    display: flex;
+    position: absolute;
+    margin-top: 100px;
 }
 
 input[type="text"] {
@@ -231,7 +246,25 @@ input[type="text"] {
 #message-preview {
     border: 1px solid #ccc;
     padding: 10px;
-    min-height: 200px;
+    overflow-y: auto;
+    height: 330px;
+    margin-bottom: 10px;
+    max-height: 480px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 5px;
+}
+button{
+    background-color: #630000;
+    border: none;
+    padding: 5px;
+    width: 150px;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover{
+    background-color: rgb(34, 128, 0) ;
 }
 
 

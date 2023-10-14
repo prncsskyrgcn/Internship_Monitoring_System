@@ -35,16 +35,21 @@
             </nav>
         </div>
         <!--Container Main start-->
+
         
         <div id="app">
             <div class="contacts">
                 <h2>Contacts</h2>
+                <div class="hotdog">
                 <ul id="contact-list">
                     <!-- Contacts will be dynamically added here -->
                 </ul>
+                </div>
+                <div class="sleep">
                 <input type="text" id="contact-name" placeholder="Enter contact name">
                 <button onclick="addContact()">Add Contact</button>
-            </div>
+                </div>
+                </div>
             <div class="messages">
                 <h2>Messages</h2>
                 <div id="message-preview">
@@ -89,7 +94,7 @@ function updateContactList() {
 }
 
 function loadMessagePreview(contact) {
-    messagePreview.innerHTML = `<h3>Chat with ${contact}</h3>`;
+    messagePreview.innerHTML = `<h3>Message with ${contact}</h3>`;
 }
 
 function sendMessage() {
